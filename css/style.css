@@ -1,0 +1,39 @@
+:root {
+  --bg: #c69363;
+  --dark: #4c3221;
+}
+
+.wrapper {
+  min-height: 100vh;
+  height: auto;
+  background-color: var(--bg);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  display: flex;
+}
+
+.title .main-img {
+  height: 130px;
+  width: 130px;
+  border-radius: 4px;
+  margin-right: 30px;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.title p {
+  color: var(--dark);
+}
