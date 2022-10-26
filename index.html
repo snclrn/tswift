@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/reset.css" />
@@ -26,51 +26,78 @@
           <img src="./images/fearless.jpg" alt="" class="main-img" />
 
           <div>
+            <span style="margin-bottom: 10px; margin-top: 6px; display: block"
+              >All About</span
+            >
             <h1>Taylor Swift</h1>
             <p>American singer-songwriter</p>
           </div>
         </div>
 
-        <div id="player"></div>
+        <div class="albums">
+          <p>Albums</p>
+        </div>
+
+        <div id="music-player">
+          <div class="title-and-album">
+            <p class="song-title">The Way I Loved You</p>
+            <span class="song-album">From Album Fearless</span>
+          </div>
+
+          <div class="player-actions">
+            <button class="toggle-music-btn">
+              <img src="./images/play.svg" alt="" />
+            </button>
+            <div class="music-actions">
+              <div class="progress">
+                <div class="time">
+                  <span class="current">0:00</span>
+                  <span class="duration">0:00</span>
+                </div>
+                <input
+                  type="range"
+                  id="range"
+                  min="0"
+                  value="0"
+                  max="100"
+                  class="slider"
+                />
+              </div>
+
+              <div class="actions">
+                <div class="go">
+                  <button class="backward">
+                    <img src="./images/backward.svg" alt="" />
+                  </button>
+                  <button class="forward">
+                    <img src="./images/forward.svg" alt="" />
+                  </button>
+                </div>
+
+                <div>
+                  <div class="volume">
+                    <button class="volume-btn">
+                      <img src="./images/volume.svg" alt="" />
+                    </button>
+
+                    <input
+                      type="range"
+                      id="range"
+                      min="0"
+                      value="0"
+                      max="100"
+                      class="volume-slider"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="player"></div>
+          </div>
+        </div>
       </div>
     </div>
 
     <script src="https://www.youtube.com/iframe_api"></script>
-    <script>
-      var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player("player", {
-          height: "390",
-          width: "640",
-          videoId: "5CbWqM0K2v8",
-          playerVars: {
-            playsinline: 1,
-          },
-          events: {
-            onReady: onPlayerReady,
-            onStateChange: onPlayerStateChange,
-          },
-        });
-      }
-
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
-        event.target.playVideo();
-      }
-
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
-          done = true;
-        }
-      }
-      function stopVideo() {
-        player.stopVideo();
-      }
-    </script>
   </body>
 </html>
